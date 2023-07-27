@@ -3,7 +3,7 @@ using namespace std;
 
 const int vertices = 7; //number of vertices
 vector<int> edges[vertices]; //an array of vectors to create an adjacency list
-bool visited_vertice[vertices];//bool array to keep track if all vertices can be visited
+bool visited_vertex[vertices];//bool array to keep track if all vertices can be visited
 
 //function to create an adjacency list
 void addEdge(int a, int b) {
@@ -13,13 +13,13 @@ void addEdge(int a, int b) {
 
 //dfs function that traverses the graph through adjacency list
 //recursively gets called
-//will be called for a vertice only if it has not been visited before
-//checks the adjacent vertices as visited
+//will be called for a vertex only if it has not been visited before
+//marks the adjacent vertices as visited
 void dfs(int ver) {
-    visited_vertice[ver] = true;
-    for (int connected_vertice : edges[ver]) {
-        if (!visited_vertice[connected_vertice]) {
-            dfs(connected_vertice);
+    visited_vertex[ver] = true;
+    for (int connected_vertex : edges[ver]) {
+        if (!visited_vertex[connected_vertex]) {
+            dfs(connected_vertex);
         }
     }
 }
@@ -29,11 +29,11 @@ void dfs(int ver) {
 bool path() {
 
     for (int i = 0; i < vertices; i++) {
-        visited_vertice[i] = false;
+        visited_vertex[i] = false;
     }
     dfs(0);
     for (int i = 0; i < vertices; i++) {
-        if (!visited_vertice[i]) {
+        if (!visited_vertex[i]) {
             return false;
         }
     }
